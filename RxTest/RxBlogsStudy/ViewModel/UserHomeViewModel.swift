@@ -57,7 +57,7 @@ class UserHomeViewModel {
                                          ["created_by": UserDefault.getAddress()!]) { [weak self] (blogResult) in
                 guard let mySelf = self else {return}
                 guard let bmodel = BaseBlogsModel.init(JSONString: blogResult) else {
-                    SVProgressHUD.showError(withStatus: "请求用户_博客_信息失败")
+                    SVProgressHUD.showError(withStatus: "请求用户博客信息失败")
                     return
                 }
 

@@ -225,14 +225,12 @@
 			isa = PBXGroup;
 			children = (
 				81394E8C273E0CCF00B0DC71 /* AppDelegate.swift */,
-				81A6355C276C9317002EFC9F /* BlogsExample */,
 				81BF7B01276AD6B600CFD221 /* AliExample */,
 				81394EF8273E440300B0DC71 /* API */,
 				81C412682769F3AE003AF012 /* MoyaRxSwiftExample */,
-				81394F93273E58D700B0DC71 /* Macro */,
 				81394ED7273E100C00B0DC71 /* Center */,
 				81394ED6273E100400B0DC71 /* Mine */,
-				81394ED5273E0FDB00B0DC71 /* Home */,
+				81394ED5273E0FDB00B0DC71 /* RxBlogsStudy */,
 				81394ECC273E0ECB00B0DC71 /* Base */,
 				81394EC2273E0D2000B0DC71 /* System */,
 			);
@@ -277,17 +275,17 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		81394ED5273E0FDB00B0DC71 /* Home */ = {
+		81394ED5273E0FDB00B0DC71 /* RxBlogsStudy */ = {
 			isa = PBXGroup;
 			children = (
+				814244F727748492004F906B /* BlogAPI */,
+				814244F627748435004F906B /* Other */,
 				8152C421277058BD00824368 /* View */,
 				8111DA69273E747C00F8B4FE /* Controller */,
 				81394FEF273E6C4C00B0DC71 /* Model */,
 				81394FA4273E5A7A00B0DC71 /* ViewModel */,
-				810C377A27717E7F00212420 /* UserDefault.swift */,
-				810C37BA2771ACE200212420 /* FileTools.swift */,
 			);
-			path = Home;
+			path = RxBlogsStudy;
 			sourceTree = "<group>";
 		};
 		81394ED6273E100400B0DC71 /* Mine */ = {
@@ -330,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				81394FD7273E6C2100B0DC71 /* ViewModel.swift */,
+				81A6357F276C9564002EFC9F /* BlogsViewModel.swift */,
 				8152C42A277059AD00824368 /* CreatedViewModel.swift */,
 				810C37BF2771B43700212420 /* LoginViewModel.swift */,
 				814244B5277416F1004F906B /* PublishViewModel.swift */,
@@ -341,9 +340,28 @@
 		81394FEF273E6C4C00B0DC71 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				81A6355D276C932D002EFC9F /* BlogsModel.swift */,
 				81394FF3273E6C6500B0DC71 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		814244F627748435004F906B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				81394F93273E58D700B0DC71 /* Macro */,
+				810C377A27717E7F00212420 /* UserDefault.swift */,
+				810C37BA2771ACE200212420 /* FileTools.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		814244F727748492004F906B /* BlogAPI */ = {
+			isa = PBXGroup;
+			children = (
+				81A6357A276C941E002EFC9F /* BlogsAPI.swift */,
+			);
+			path = BlogAPI;
 			sourceTree = "<group>";
 		};
 		8152C421277058BD00824368 /* View */ = {
@@ -357,16 +375,6 @@
 				814244BF27745A24004F906B /* UserHomeView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		81A6355C276C9317002EFC9F /* BlogsExample */ = {
-			isa = PBXGroup;
-			children = (
-				81A6355D276C932D002EFC9F /* BlogsModel.swift */,
-				81A6357A276C941E002EFC9F /* BlogsAPI.swift */,
-				81A6357F276C9564002EFC9F /* BlogsViewModel.swift */,
-			);
-			path = BlogsExample;
 			sourceTree = "<group>";
 		};
 		81BF7B01276AD6B600CFD221 /* AliExample */ = {
