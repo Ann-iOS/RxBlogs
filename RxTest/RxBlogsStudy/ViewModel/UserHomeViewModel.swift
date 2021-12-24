@@ -38,8 +38,8 @@ class UserHomeViewModel {
 
         requestCommond.subscribe { (event) in
 
-            /// 获取用户信息
-            /// 获取发布的博客列表
+            /// 1 - 获取用户信息
+            /// 2 - 获取发布的博客列表
             dbchain.queryDataByCondition("user",
                                          ["dbchain_key": UserDefault.getAddress()!]) { [weak self] (userResult) in
                 guard let mySelf = self else {return}

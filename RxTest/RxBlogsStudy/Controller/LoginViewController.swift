@@ -9,9 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewController: UIViewController {
 
-    let bag = DisposeBag()
+let filePath = documentTools() + "/USERICONPATH"
+
+class LoginViewController: UIViewController {
     var loginView: LoginView!
     let ViewM = LoginViewModel.init()
 
@@ -25,10 +26,10 @@ class LoginViewController: UIViewController {
 
         loginView.signOut.rx.tap.subscribe { [self] (event) in
             ViewM.signout()
-        }.disposed(by: bag)
+        }.disposed(by: self.ViewM.bag)
 
         loginView.signIn.rx.tap.subscribe(onNext: { [self] in
             ViewM.requestLogin.onNext(true)
-        }).disposed(by: bag)
+        }).disposed(by: self.ViewM.bag)
     }
 }

@@ -11,7 +11,6 @@ import RxCocoa
 
 class UserHomeViewController: UIViewController {
 
-    let bag = DisposeBag()
     private let navImgV = UIImageView.init(image: UIImage(named: "homepage_nav_image"))
     private let editButton = UIButton.init(type: .custom)
     private var userView: UserHomeView!
@@ -22,6 +21,13 @@ class UserHomeViewController: UIViewController {
 
         self.view.backgroundColor = .colorWithHexString("#F8F8F8")
         configNavBar()
+
+        /// 编辑个人信息事件
+        editButton.rx.tap.subscribe(onNext: {
+            let vc = UserInfoViewController.init(nibName: "UserInfoViewController", bundle: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: self.userViewModel.bag)
+
 
         userView = UserHomeView.init(frame: self.view.bounds)
         self.view.addSubview(userView)
@@ -37,7 +43,7 @@ class UserHomeViewController: UIViewController {
                 let model = event.element!.last
                 mySelf.userView.configUserInfo(model: model!)
             }
-        }.disposed(by: bag)
+        }.disposed(by: self.userViewModel.bag)
 
         /// TableView 赋值
 //        userViewModel.blogDataSource.subscribe { (event) in
@@ -53,7 +59,7 @@ class UserHomeViewController: UIViewController {
             blogsModel.readNumber = randomIn(min: 100, max: 1000)
             cell.selectionStyle = .none
             cell.configCellModel(blogsModel: blogsModel)
-        }.disposed(by: bag)
+        }.disposed(by: self.userViewModel.bag)
         
     }
     
@@ -63,6 +69,9 @@ class UserHomeViewController: UIViewController {
     }
 
     func configNavBar() {
+        let  item =  UIBarButtonItem (title:  "" , style: . plain , target:  self , action:  nil )
+        self.navigationItem.backBarButtonItem = item
+
         navImgV.frame = CGRect(x: UIScreen.main.bounds.width * 0.5 - 90, y: 20, width: 180, height: 40)
         self.navigationItem.titleView = navImgV
 

@@ -19,7 +19,6 @@ class UserHomeView: UIView {
 
     lazy var iconImgV : UIImageView = {
         let imgv = UIImageView()
-        let filePath = documentTools() + "/USERICONPATH"
         if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
             let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
             do{

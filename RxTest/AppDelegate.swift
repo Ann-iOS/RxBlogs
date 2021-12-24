@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         /// 提示框时间设置
         SVProgressHUD.setMinimumDismissTimeInterval(2)
+        SVProgressHUD.setDefaultStyle(.dark)
 
         IQKeyboardManager.shared.enable = true
 

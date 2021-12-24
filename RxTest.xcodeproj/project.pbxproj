@@ -36,6 +36,8 @@
 		814244BB2774491F004F906B /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244BA2774491F004F906B /* UserHomeViewController.swift */; };
 		814244C027745A24004F906B /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244BF27745A24004F906B /* UserHomeView.swift */; };
 		814244C527745B89004F906B /* UserHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244C427745B89004F906B /* UserHomeViewModel.swift */; };
+		814244FD277485FB004F906B /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244FB277485FB004F906B /* UserInfoViewController.swift */; };
+		814244FE277485FB004F906B /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 814244FC277485FB004F906B /* UserInfoViewController.xib */; };
 		8152C423277058D100824368 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152C422277058D100824368 /* CreateView.swift */; };
 		8152C42B277059AD00824368 /* CreatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8152C42A277059AD00824368 /* CreatedViewModel.swift */; };
 		81547C1427732986006767D3 /* PublishBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81547C1327732986006767D3 /* PublishBlogViewController.swift */; };
@@ -44,6 +46,7 @@
 		81A6355E276C932D002EFC9F /* BlogsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A6355D276C932D002EFC9F /* BlogsModel.swift */; };
 		81A6357B276C941E002EFC9F /* BlogsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A6357A276C941E002EFC9F /* BlogsAPI.swift */; };
 		81A63580276C9564002EFC9F /* BlogsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A6357F276C9564002EFC9F /* BlogsViewModel.swift */; };
+		81B9EC0827756C7E00BA5318 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B9EC0727756C7E00BA5318 /* UserInfoViewModel.swift */; };
 		81BF7B06276AD74300CFD221 /* MyApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF7B05276AD74300CFD221 /* MyApiService.swift */; };
 		81BF7B0F276AD77B00CFD221 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF7B0E276AD77B00CFD221 /* User.swift */; };
 		81BF7B32276B0C9C00CFD221 /* MoyaDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BF7B31276B0C9C00CFD221 /* MoyaDataSourceModel.swift */; };
@@ -119,6 +122,8 @@
 		814244BA2774491F004F906B /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		814244BF27745A24004F906B /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
 		814244C427745B89004F906B /* UserHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewModel.swift; sourceTree = "<group>"; };
+		814244FB277485FB004F906B /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		814244FC277485FB004F906B /* UserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
 		8152C422277058D100824368 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		8152C42A277059AD00824368 /* CreatedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedViewModel.swift; sourceTree = "<group>"; };
 		81547C1327732986006767D3 /* PublishBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishBlogViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		81A6355D276C932D002EFC9F /* BlogsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsModel.swift; sourceTree = "<group>"; };
 		81A6357A276C941E002EFC9F /* BlogsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsAPI.swift; sourceTree = "<group>"; };
 		81A6357F276C9564002EFC9F /* BlogsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogsViewModel.swift; sourceTree = "<group>"; };
+		81B9EC0727756C7E00BA5318 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		81BF7B05276AD74300CFD221 /* MyApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApiService.swift; sourceTree = "<group>"; };
 		81BF7B0E276AD77B00CFD221 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		81BF7B31276B0C9C00CFD221 /* MoyaDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaDataSourceModel.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 				81394ED8273E104100B0DC71 /* HomeViewController.swift */,
 				81547C1327732986006767D3 /* PublishBlogViewController.swift */,
 				814244BA2774491F004F906B /* UserHomeViewController.swift */,
+				814244FB277485FB004F906B /* UserInfoViewController.swift */,
+				814244FC277485FB004F906B /* UserInfoViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -333,6 +341,7 @@
 				810C37BF2771B43700212420 /* LoginViewModel.swift */,
 				814244B5277416F1004F906B /* PublishViewModel.swift */,
 				814244C427745B89004F906B /* UserHomeViewModel.swift */,
+				81B9EC0727756C7E00BA5318 /* UserInfoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -533,6 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814244FE277485FB004F906B /* UserInfoViewController.xib in Resources */,
 				81394E99273E0CD900B0DC71 /* LaunchScreen.storyboard in Resources */,
 				81394E96273E0CD900B0DC71 /* Assets.xcassets in Resources */,
 			);
@@ -663,6 +673,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				81394ECE273E0EFF00B0DC71 /* TabBarController.swift in Sources */,
+				814244FD277485FB004F906B /* UserInfoViewController.swift in Sources */,
+				81B9EC0827756C7E00BA5318 /* UserInfoViewModel.swift in Sources */,
 				81C4128B2769F4F6003AF012 /* PostModel.swift in Sources */,
 				81C41215276987A9003AF012 /* FyRequest.swift in Sources */,
 				81C412372769994A003AF012 /* FySongResponse.swift in Sources */,

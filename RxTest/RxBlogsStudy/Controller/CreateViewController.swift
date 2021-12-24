@@ -19,7 +19,6 @@ let dbchain = DBChainKit.init(appcode: "GGPJWXRSC6",
 
 class CreateViewController: UIViewController {
 
-    let bag = DisposeBag()
     var createdView: CreateView!
     let viewModel = CreatedViewModel.init()
 
@@ -38,7 +37,7 @@ class CreateViewController: UIViewController {
             mySelf.createdView.loginButton.isEnabled = bool
             mySelf.createdView.loginButton.isSelected = bool
             mySelf.createdView.loginButton.backgroundColor = bool == true ? .colorWithHexString("#2E44FF") : .colorWithHexString("#F8F8F8")
-        }).disposed(by: bag)
+        }).disposed(by: self.viewModel.bag)
 
         // 登录按钮
         createdView.loginButton.rx.tap.subscribe(onNext: { [self] in
@@ -46,12 +45,12 @@ class CreateViewController: UIViewController {
             viewModel.requestRegister(mnemonicStr: createdView.mnemonicLabel.text!,
                                       nickName: createdView.nameTextField.text!)
             viewModel.requestCommond.onNext(true)
-        }).disposed(by: bag)
+        }).disposed(by: self.viewModel.bag)
 
         /// 生成助记词
         createdView.createrMnemonicButton.rx.tap.subscribe(onNext: { [self] in
             createdView.mnemonicLabel.text = dbchain.createMnemonic()
-        }).disposed(by: bag)
+        }).disposed(by: self.viewModel.bag)
 
     }
 }

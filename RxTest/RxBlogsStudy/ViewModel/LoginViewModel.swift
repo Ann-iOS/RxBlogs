@@ -37,7 +37,6 @@ class LoginViewModel {
 
     /// 退出操作
     func signout(){
-        let filePath = documentTools() + "/USERICONPATH"
         /// 创建文件并保存
         if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
             // 该文件已存在 删除

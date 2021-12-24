@@ -25,8 +25,6 @@ class LoginView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-//        self.backgroundColor = .colorWithHexString("#F8F8F8")
         self.backgroundColor = .colorWithHexString("#F3F3F3")
         topImgV = UIImageView.init(image: UIImage(named: "creat_top_image"), highlightedImage: UIImage(named: "creat_top_image"))
         centerBackView = UIView.init()
@@ -37,7 +35,6 @@ class LoginView: UIView {
         addSubview(centerBackView)
 
         iconImgV = UIImageView.init()
-        let filePath = documentTools() + "/USERICONPATH"
         if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
             let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
             do {

@@ -11,7 +11,6 @@ import RxCocoa
 
 class PublishBlogViewController: UIViewController {
 
-    let bag = DisposeBag()
     var publishView : PublishView!
     let viewModel = PublishViewModel()
     
@@ -28,7 +27,7 @@ class PublishBlogViewController: UIViewController {
                 mySelf.viewModel.publishBlogsEvent(title: mySelf.publishView.titleTextField.text!,
                                                    body: mySelf.publishView.contenTextView.text!)
                 mySelf.viewModel.requestPublishBlogs.onNext(true)
-            }).disposed(by: bag)
+            }).disposed(by: self.viewModel.bag)
 
 
         /// 订阅 ViewModel 的结果
@@ -37,7 +36,7 @@ class PublishBlogViewController: UIViewController {
             if state.element == 1 {
                 mySelf.navigationController?.popViewController(animated: true)
             }
-        }.disposed(by: bag)
+        }.disposed(by: self.viewModel.bag)
 
     }
     
@@ -62,7 +61,7 @@ class PublishBlogViewController: UIViewController {
 
         cancelButton.rx.tap.subscribe(onNext: {
             self.navigationController?.popViewController(animated: true)
-        }).disposed(by: bag)
+        }).disposed(by: self.viewModel.bag)
 
         publishView = PublishView.init(frame: self.view.bounds)
         self.view.addSubview(publishView)

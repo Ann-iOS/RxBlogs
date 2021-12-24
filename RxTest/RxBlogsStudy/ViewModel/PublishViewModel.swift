@@ -14,7 +14,7 @@ import SVProgressHUD
 let PUBLISHBLOGSSUCCESSKEY = "PublishBlogsSuccessKey"
 class PublishViewModel {
 
-    private let bag = DisposeBag()
+    let bag = DisposeBag()
 
     var publishState = PublishSubject<Int>()
 

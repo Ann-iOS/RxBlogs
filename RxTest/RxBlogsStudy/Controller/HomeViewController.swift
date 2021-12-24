@@ -13,7 +13,6 @@ import HDWalletSDK
 
 class HomeViewController: UIViewController {
 
-    let bag = DisposeBag()
     var rightIconBtn = UIButton()
     var publishBlogButton = UIButton()
     let blogsVM = BlogsViewModel.init()
@@ -39,14 +38,14 @@ class HomeViewController: UIViewController {
             .subscribe(onNext:  {
                 let vc = UserHomeViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
-        }).disposed(by: bag)
+            }).disposed(by: self.blogsVM.bag)
 
         publishBlogButton.rx.tap
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .subscribe(onNext: {
                 let vc = PublishBlogViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
-            }).disposed(by: bag)
+            }).disposed(by: self.blogsVM.bag)
 
         /// 接收博客发布成功后的通知
         _ = NotificationCenter.default.rx
@@ -54,7 +53,7 @@ class HomeViewController: UIViewController {
             .take(until: self.rx.deallocated) //页面销毁自动移除通知监听
             .subscribe(onNext: { _ in
                 self.blogsVM.requestCommond.onNext(true)
-            }).disposed(by: bag)
+            }).disposed(by: self.blogsVM.bag)
     }
 
     override func viewDidLayoutSubviews() {
@@ -72,6 +71,15 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
 //        clearNavigationBarLine()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+
+        let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
+        do {
+            let imageData = try Data(contentsOf: URL.init(fileURLWithPath: fileDic[0]))
+            rightIconBtn.setImage(UIImage(data: imageData), for: .normal)
+        }
+        catch {
+            rightIconBtn.setImage(UIImage(named: "home_icon_image"), for: .normal)
+        }
     }
 
 
@@ -79,6 +87,7 @@ class HomeViewController: UIViewController {
         self.tableview = UITableView.init(frame: self.view.bounds, style: .plain)
         self.tableview.separatorStyle = .none
         self.tableview.backgroundColor = .colorWithHexString("#F8F8F8")
+        self.tableview.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
         tableview.register(HomeTableViewCell.self, forCellReuseIdentifier: "cellid")
         tableview.rowHeight = 170
         view.addSubview(tableview)
@@ -104,7 +113,7 @@ class HomeViewController: UIViewController {
         rightIconBtn = UIButton.init(frame: CGRect(x: navContentView.frame.width - 76, y: 0, width: 40, height: 40))
         rightIconBtn.layer.cornerRadius = 20
         rightIconBtn.layer.masksToBounds = true
-        let filePath = documentTools() + "/USERICONPATH"
+
         if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
             let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
             do{
