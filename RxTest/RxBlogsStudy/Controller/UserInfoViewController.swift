@@ -108,6 +108,7 @@ class UserInfoViewController: UIViewController {
                     self.viewModel.saveStateObservable.subscribe { (state) in
                         if state.element == 1 {
                             print("成功了  刷新首页的头像! 并返回到上一个页面")
+                            NotificationCenter.default.post(name: NSNotification.Name("ModityUserInfoSuccessKey"), object: nil)
                             self.navigationController?.popViewController(animated: true)
                         }
                     }.disposed(by: self.viewModel.bag)

@@ -22,6 +22,13 @@ class UserHomeViewController: UIViewController {
         self.view.backgroundColor = .colorWithHexString("#F8F8F8")
         configNavBar()
 
+        _ = NotificationCenter.default.rx
+            .notification(Notification.Name("ModityUserInfoSuccessKey"))
+            .take(until: self.rx.deallocated)
+            .subscribe(onNext: { (notification) in
+                self.userViewModel.requestCommond.onNext(true)
+            }).disposed(by: self.userViewModel.bag)
+
         /// 编辑个人信息事件
         editButton.rx.tap.subscribe(onNext: {
             let vc = UserInfoViewController.init(nibName: "UserInfoViewController", bundle: nil)
@@ -44,11 +51,6 @@ class UserHomeViewController: UIViewController {
                 mySelf.userView.configUserInfo(model: model!)
             }
         }.disposed(by: self.userViewModel.bag)
-
-        /// TableView 赋值
-//        userViewModel.blogDataSource.subscribe { (event) in
-//            print("首页 博客的数量: \(event.element?.count)")
-//        }.disposed(by: bag)
 
         /// drive 赋值
         userViewModel.blogDataSource.asDriver().drive(userView.tableView.rx.items(cellIdentifier: "userCellId", cellType: HomeTableViewCell.self)){ (index, model, cell ) in
