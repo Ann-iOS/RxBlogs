@@ -96,9 +96,104 @@ struct userModel: Mappable {
     }
 }
 
+struct BaseDiscussModel: Mappable {
+    var height : String?
+    var result : [discussModel]?
+    init?(map: Map) { }
 
+    mutating func mapping(map: Map) {
+        height <- map["height"]
+        result <- map["result"]
+    }
+}
 
+struct discussModel: Mappable {
+    var id: String = ""
+    var created_by: String = ""
+    var created_at: String = ""
+    /// 文章id
+    var blog_id:String = ""
+    /// 评论id
+    var discuss_id: String = ""
+    /// 评论内容
+    var text: String = ""
+    /// 自定义类型.  头像
+    var imageIndex: String = ""
+    var nickName: String = ""
 
+    var replyModelArr :[replyDiscussModel] = []
+    /// 回复人的昵称
+    var replyNickName: String = ""
+
+    init?(map: Map) {}
+
+    mutating func mapping(map: Map) {
+        id <- map["id"]
+        created_by <- map["created_by"]
+        created_at <- map["created_at"]
+        blog_id <- map["blog_id"]
+        discuss_id <- map["discuss_id"]
+        text <- map["text"]
+        imageIndex <- map["imageIndex"]
+        nickName <- map["nickName"]
+        replyModelArr <- map["replyModelArr"]
+        replyNickName <- map["replyNickName"]
+    }
+}
+
+//struct replyDiscussModel: Mappable {
+//
+//    var id: String = ""
+//    var created_by: String = ""
+//    var created_at: String = ""
+//    /// 文章id
+//    var blog_id:String = ""
+//    /// 评论id
+//    var discuss_id: String = ""
+//    /// 评论内容
+//    var text: String = ""
+//    /// 自定义类型.  头像
+//    var imageIndex: String = ""
+//    var nickName: String = ""
+//    /// 回复id
+//    var replyID :String = ""
+//    /// 回复人的昵称
+//    var replyNickName: String = ""
+//
+//    init?(map: Map) { }
+//
+//    mutating func mapping(map: Map) {
+//        id <- map["id"]
+//        created_by <- map["created_by"]
+//        created_at <- map["created_at"]
+//        blog_id <- map["blog_id"]
+//        discuss_id <- map["discuss_id"]
+//        text <- map["text"]
+//        imageIndex <- map["imageIndex"]
+//        nickName <- map["nickName"]
+//        replyNickName <- map["replyNickName"]
+//    }
+//}
+
+class replyDiscussModel: Codable {
+
+    var id: String = ""
+    var created_by: String = ""
+    var created_at: String = ""
+    /// 文章id
+    var blog_id:String = ""
+    /// 评论id
+    var discuss_id: String = ""
+    /// 评论内容
+    var text: String = ""
+    /// 自定义类型.  头像
+    var imageIndex: String = ""
+    var nickName: String = ""
+    /// 回复id
+    var replyID :String = ""
+    /// 回复人的昵称
+    var replyNickName: String = ""
+}
 
 
 

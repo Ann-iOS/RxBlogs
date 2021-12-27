@@ -48,7 +48,7 @@ class CreateView: UIView {
         mnemonicLabel.textColor = .colorWithHexString("#444444")
         mnemonicLabel.font = UIFont.systemFont(ofSize: 20)
         mnemonicLabel.numberOfLines = 0
-        let str = "bind dizzy trigger story senior session finger analyst text traffic scheme parent"
+        let str = "much group during enjoy hen category captain search maze notable toddler build"
         //通过富文本来设置行间距
         let  paraph =  NSMutableParagraphStyle ()
         //将行间距设置为28

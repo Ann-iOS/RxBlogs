@@ -32,6 +32,11 @@
 		81394F9D273E59EC00B0DC71 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81394F9C273E59EC00B0DC71 /* Extension.swift */; };
 		81394FD8273E6C2100B0DC71 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81394FD7273E6C2100B0DC71 /* ViewModel.swift */; };
 		81394FF4273E6C6500B0DC71 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81394FF3273E6C6500B0DC71 /* Model.swift */; };
+		813A800D27795EAD00F213A3 /* DetailBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813A800C27795EAD00F213A3 /* DetailBlogViewController.swift */; };
+		813A8012277962E400F213A3 /* DetailBlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813A8011277962E400F213A3 /* DetailBlogView.swift */; };
+		813A801827796CB800F213A3 /* DetailBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813A801627796CB800F213A3 /* DetailBlogTableViewCell.swift */; };
+		813A801927796CB800F213A3 /* DetailBlogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813A801727796CB800F213A3 /* DetailBlogTableViewCell.xib */; };
+		813A801E2779964B00F213A3 /* DetailBlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813A801D2779964B00F213A3 /* DetailBlogViewModel.swift */; };
 		814244B6277416F1004F906B /* PublishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244B5277416F1004F906B /* PublishViewModel.swift */; };
 		814244BB2774491F004F906B /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244BA2774491F004F906B /* UserHomeViewController.swift */; };
 		814244C027745A24004F906B /* UserHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814244BF27745A24004F906B /* UserHomeView.swift */; };
@@ -118,6 +123,11 @@
 		81394F9C273E59EC00B0DC71 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		81394FD7273E6C2100B0DC71 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		81394FF3273E6C6500B0DC71 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		813A800C27795EAD00F213A3 /* DetailBlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBlogViewController.swift; sourceTree = "<group>"; };
+		813A8011277962E400F213A3 /* DetailBlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBlogView.swift; sourceTree = "<group>"; };
+		813A801627796CB800F213A3 /* DetailBlogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBlogTableViewCell.swift; sourceTree = "<group>"; };
+		813A801727796CB800F213A3 /* DetailBlogTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailBlogTableViewCell.xib; sourceTree = "<group>"; };
+		813A801D2779964B00F213A3 /* DetailBlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBlogViewModel.swift; sourceTree = "<group>"; };
 		814244B5277416F1004F906B /* PublishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewModel.swift; sourceTree = "<group>"; };
 		814244BA2774491F004F906B /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		814244BF27745A24004F906B /* UserHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeView.swift; sourceTree = "<group>"; };
@@ -203,6 +213,7 @@
 				814244BA2774491F004F906B /* UserHomeViewController.swift */,
 				814244FB277485FB004F906B /* UserInfoViewController.swift */,
 				814244FC277485FB004F906B /* UserInfoViewController.xib */,
+				813A800C27795EAD00F213A3 /* DetailBlogViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,6 +353,7 @@
 				814244B5277416F1004F906B /* PublishViewModel.swift */,
 				814244C427745B89004F906B /* UserHomeViewModel.swift */,
 				81B9EC0727756C7E00BA5318 /* UserInfoViewModel.swift */,
+				813A801D2779964B00F213A3 /* DetailBlogViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -382,6 +394,9 @@
 				810C37CC2771CBA000212420 /* HomeTableViewCell.swift */,
 				81547C1827732E18006767D3 /* PublishView.swift */,
 				814244BF27745A24004F906B /* UserHomeView.swift */,
+				813A8011277962E400F213A3 /* DetailBlogView.swift */,
+				813A801627796CB800F213A3 /* DetailBlogTableViewCell.swift */,
+				813A801727796CB800F213A3 /* DetailBlogTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -544,6 +559,7 @@
 			files = (
 				814244FE277485FB004F906B /* UserInfoViewController.xib in Resources */,
 				81394E99273E0CD900B0DC71 /* LaunchScreen.storyboard in Resources */,
+				813A801927796CB800F213A3 /* DetailBlogTableViewCell.xib in Resources */,
 				81394E96273E0CD900B0DC71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,9 +703,11 @@
 				81C4121A276990E6003AF012 /* FyResponse.swift in Sources */,
 				810C37BB2771ACE200212420 /* FileTools.swift in Sources */,
 				81E2886E276746B100243EC9 /* ViewController.swift in Sources */,
+				813A8012277962E400F213A3 /* DetailBlogView.swift in Sources */,
 				81394F9D273E59EC00B0DC71 /* Extension.swift in Sources */,
 				81394ED9273E104100B0DC71 /* HomeViewController.swift in Sources */,
 				81C4121F276992EF003AF012 /* FyParams.swift in Sources */,
+				813A801E2779964B00F213A3 /* DetailBlogViewModel.swift in Sources */,
 				81394FF4273E6C6500B0DC71 /* Model.swift in Sources */,
 				814244B6277416F1004F906B /* PublishViewModel.swift in Sources */,
 				810C37C82771C08B00212420 /* HomeView.swift in Sources */,
@@ -703,7 +721,9 @@
 				81A63580276C9564002EFC9F /* BlogsViewModel.swift in Sources */,
 				81A6355E276C932D002EFC9F /* BlogsModel.swift in Sources */,
 				81C412952769F859003AF012 /* MoyaViewModel.swift in Sources */,
+				813A800D27795EAD00F213A3 /* DetailBlogViewController.swift in Sources */,
 				81394F8A273E589500B0DC71 /* LoginViewController.swift in Sources */,
+				813A801827796CB800F213A3 /* DetailBlogTableViewCell.swift in Sources */,
 				810C377B27717E8000212420 /* UserDefault.swift in Sources */,
 				8152C423277058D100824368 /* CreateView.swift in Sources */,
 				81C41232276997B5003AF012 /* FyNetError.swift in Sources */,

@@ -53,7 +53,6 @@ class BlogsViewModel {
 
 //      自定义cell
         modelDataSource.bind(to: tableview.rx.items(cellIdentifier: "cellid")) { index, model, cell in
-//            print("自定义cell 刷新列表了!! \(index)")
             let homeCell = cell as! HomeTableViewCell
             homeCell.selectionStyle = .none
             homeCell.configCellModel(blogsModel: model)

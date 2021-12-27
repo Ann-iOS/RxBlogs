@@ -54,6 +54,13 @@ class HomeViewController: UIViewController {
             .subscribe(onNext: { _ in
                 self.blogsVM.requestCommond.onNext(true)
             }).disposed(by: self.blogsVM.bag)
+
+        tableview.rx.itemSelected.bind { [weak self] index in
+            self?.tableview.deselectRow(at: index, animated: false)
+            let model = self?.blogsVM.modelDataSource.value[index.row]
+//            print("model: \(model?.title) --- index: \(index.row)")
+            self?.navigationController?.pushViewController(DetailBlogViewController(blogModel: model!), animated: true)
+        }.disposed(by: blogsVM.bag)
     }
 
     override func viewDidLayoutSubviews() {
@@ -69,16 +76,17 @@ class HomeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        clearNavigationBarLine()
+//        print(UserDefault.getCurrentMnemonic()!)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-
-        let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
-        do {
-            let imageData = try Data(contentsOf: URL.init(fileURLWithPath: fileDic[0]))
-            rightIconBtn.setImage(UIImage(data: imageData), for: .normal)
-        }
-        catch {
-            rightIconBtn.setImage(UIImage(named: "home_icon_image"), for: .normal)
+        if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
+            let fileDic = FileTools.sharedInstance.filePathsWithDirPath(path: filePath)
+            do {
+                let imageData = try Data(contentsOf: URL.init(fileURLWithPath: fileDic[0]))
+                rightIconBtn.setImage(UIImage(data: imageData), for: .normal)
+            }
+            catch {
+                rightIconBtn.setImage(UIImage(named: "home_icon_image"), for: .normal)
+            }
         }
     }
 

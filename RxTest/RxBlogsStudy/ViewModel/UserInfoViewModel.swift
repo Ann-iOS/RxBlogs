@@ -48,7 +48,6 @@ class UserInfoViewModel {
                 /// 先上传头像
                 dbchain.uploadfile(filename: "file",
                                    fileData: iconImage!.compressImage()) { (state) in
-                    print("上传头像 返回 cid state: \(state)")
                     imageCid = state
                     self.saveIconImageLocal(iconImg: iconImage!)
                     UserDefault.saveUserNikeName(name!)
@@ -92,7 +91,6 @@ class UserInfoViewModel {
         /// 创建文件并保存
         if FileTools.sharedInstance.isFileExisted(fileName: USERICONPATH, path: filePath) == true {
             /// 该文件已存在
-            // 删除
             let _ = FileTools.sharedInstance.deleteFile(fileName: USERICONPATH, path: filePath)
         } else {
             /// 重新创建目录 文件夹 缓存数据

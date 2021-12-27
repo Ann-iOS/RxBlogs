@@ -54,14 +54,12 @@ class CreatedViewModel {
                 dbchain.registerNewAccountNumber { (state, msg) in
                     if state {
                         /// 插入数据到用户表
-                        print("获取积分成功!!!!")
                         self.insertUserData(mnemonicStr: mnemonicStr,
                                             privatekeyStr: privatekey,
                                             publickeyStr: publickey,
                                             address: address,
                                             nickName: nickName)
                     } else {
-                        print("获取积分 失败 !!!")
                         SVProgressHUD.showError(withStatus: "获取积分失败")
                     }
                 }
@@ -94,7 +92,6 @@ class CreatedViewModel {
                     UserDefault.savePublickey(privatekeyStr)
                     UserDefault.savePrivateKey(publickeyStr)
                     SVProgressHUD.dismiss()
-                    print("注册时昵称: \(nickName) --- \(UserDefault.getUserNikeName())")
                     let vc = HomeViewController.init()
                     let nav = UINavigationController.init(rootViewController: vc)
                     UIApplication.shared.keyWindow?.rootViewController = nav
