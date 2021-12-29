@@ -36,6 +36,7 @@ class DetailBlogViewModel {
                     return
                 }
                 self?.tempReplyDataSource.accept(dmodel.result!)
+
                 self?.requestReplyUserInfo()
             }
         }.disposed(by: bag)
@@ -64,7 +65,9 @@ class DetailBlogViewModel {
 
                         /// 判断回复的id 是否为空
                         if model.discuss_id.isBlank {
-                            self?.replyDataSource.accept([tempModel])
+                            self?.replyDataSource.accept((self?.replyDataSource.value)! + [tempModel])
+//                            tempReplyArr.accept([tempModel])
+//                            print("单独的评论: \(self?.replyDataSource.value.count)")
                         } else {
                             /// 添加到 临时数组 做进一步处理
                             tempModel.replyNickName = userModel?.name ?? "未知"
@@ -75,7 +78,9 @@ class DetailBlogViewModel {
                     } else {
                         /// 判断回复的id 是否为空
                         if model.discuss_id.isBlank {
-                            self?.replyDataSource.accept([tempModel])
+                            self?.replyDataSource.accept((self?.replyDataSource.value)! + [tempModel])
+//                            tempReplyArr.accept([tempModel])
+//                            print("单独的评论11: \(self?.replyDataSource.value.count)")
                         } else {
                             /// 添加到 临时数组 做进一步处理
                             tempModel.replyNickName = "未知用户"
@@ -85,11 +90,15 @@ class DetailBlogViewModel {
                     }
                 }
             })
-        }.disposed(by: bag)
+        }
+        .disposed(by: bag)
 
         /// 重新组装 回复数据
         tempReplyArr.subscribe { (models) in
-            var tempModels = self.replyDataSource.value
+
+            print("重新组装 回复数据 :\(self.tempReplyDataSource.value.count)")
+            var tempModels = self.tempReplyDataSource.value
+
             for model in tempModels {
                 let rmodel = replyDiscussModel()
                 rmodel.blog_id = model.blog_id
@@ -114,9 +123,12 @@ class DetailBlogViewModel {
             }
 
             self.replyDataSource.accept(tempModels)
+
+            print("组装完成: \(self.replyDataSource.value.count) tempModels: \(tempModels.count)")
             SVProgressHUD.dismiss()
 
         }.disposed(by: bag)
+
 
 //        replyDataSource.bind(to: tableview.rx.items(cellIdentifier: DetailBlogTableViewCell.identifier)) { index, model, cell in
 //            let detailCell = cell as! DetailBlogTableViewCell
@@ -126,6 +138,7 @@ class DetailBlogViewModel {
 //
 //        }.disposed(by: bag)
     }
+
 
     /// 发布评论
     /// contentStr :  评论的内容

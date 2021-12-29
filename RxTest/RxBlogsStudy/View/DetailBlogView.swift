@@ -21,6 +21,9 @@ class DetailBlogView: UIView {
         }
     }
 
+    let dataSource = BehaviorRelay(value: [discussModel]())
+//    let discussModelArr =
+
     var viewHeight = 50 {
         didSet {
             headerView.frame = CGRect(x: 0, y: 0, width: Int(SCREEN_WIDTH), height: viewHeight + 140)
@@ -177,6 +180,11 @@ class DetailBlogView: UIView {
         replyTextField.frame = CGRect(x: 10, y: 10, width: SCREEN_WIDTH - 32 - 100, height: 52)
         replyBtn.frame = CGRect(x: replyTextField.frame.maxX + 14, y: 16, width: 80, height: 40)
         replyBackView.addSubViews([replyTextField,replyBtn])
+
+//        dataSource.subscribe { [weak self] (models) in
+//            print("DataSource: \(models.element?.count)")
+//            self?.discussModelArr = models.element ?? []
+//        }.disposed(by: DisposeBag())
     }
 
     required init?(coder: NSCoder) {
@@ -185,7 +193,6 @@ class DetailBlogView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
     }
 
     @objc func keyboardWillhide(_ sender: NSNotification) {
@@ -234,19 +241,21 @@ extension DetailBlogView : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let textStr = self.discussModelArr[section].text
         let textHeight = self.headerTextHeight(text: textStr)
+
         let view = sectionHeaderView.init(frame: CGRect(x: 16, y: 0, width: SCREEN_WIDTH - 32, height: textHeight + 70), textHeight: textHeight)
         let sectionModel = self.discussModelArr[section]
         view.model = sectionModel
-//        view.sectionHeaderClickReplyBlock = {[weak self] in
-//            guard let mySelf = self else {return}
-//            mySelf.replyID = sectionModel.id
-//            mySelf.replyTextField.becomeFirstResponder()
-//        }
+        view.sectionHeaderClickReplyBlock = {[weak self] in
+            guard let mySelf = self else {return}
+            mySelf.replyID = sectionModel.id
+            mySelf.replyTextField.becomeFirstResponder()
+        }
 
-        view.replyBtn.rx.tap.subscribe { [weak self] (_) in
-            self?.replyID = sectionModel.id
-            self?.replyTextField.becomeFirstResponder()
-        }.disposed(by: bag)
+
+//        view.replyBtn.rx.tap.subscribe { [weak self] (_) in
+//            self?.replyID = sectionModel.id
+//            self?.replyTextField.becomeFirstResponder()
+//        }.disposed(by: bag)
 
         return view
     }
@@ -329,10 +338,10 @@ extension DetailBlogView {
 
 
 // 组头
-
+typealias sectionHeaderClickReplyButtonBlock = () -> ()
 class sectionHeaderView : UIView {
 
-//    var sectionHeaderClickReplyBlock :sectionHeaderClickReplyButtonBlock?
+    var sectionHeaderClickReplyBlock :sectionHeaderClickReplyButtonBlock?
 
     var model = discussModel.init(JSONString: ""){
         didSet{
@@ -376,7 +385,7 @@ class sectionHeaderView : UIView {
         replyBtn.setTitle("回复", for: .normal)
         replyBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         replyBtn.setTitleColor(.colorWithHexString("9E9E9E"), for: .normal)
-//        replyBtn.addTarget(self, action: #selector(relpyButtonClickEvent), for: .touchUpInside)
+        replyBtn.addTarget(self, action: #selector(relpyButtonClickEvent), for: .touchUpInside)
         self.addSubview(replyBtn)
 
         //设置圆角遮罩
@@ -426,11 +435,11 @@ class sectionHeaderView : UIView {
         }
       }
 
-//    @objc func relpyButtonClickEvent() {
-//        if self.sectionHeaderClickReplyBlock != nil {
-//            self.sectionHeaderClickReplyBlock!()
-//        }
-//    }
+    @objc func relpyButtonClickEvent() {
+        if self.sectionHeaderClickReplyBlock != nil {
+            self.sectionHeaderClickReplyBlock!()
+        }
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
